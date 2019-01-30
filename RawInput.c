@@ -220,15 +220,13 @@ LRESULT CALLBACK WindowProc(HWND hWnd, UINT msg, WPARAM wParam, LPARAM lParam)
 
 			rid[0].usUsagePage = 1;
 			rid[0].usUsage     = 4;	// Joystick
-			rid[0].dwFlags     = RIDEV_EXINPUTSINK; // Recieve messages when in background if 
-													// foreground application isn't processing it via raw input.
+			rid[0].dwFlags     = RIDEV_INPUTSINK; // Recieve messages when in background.
 			rid[0].hwndTarget  = hWnd;
 
 			
 			rid[1].usUsagePage = 1;
 			rid[1].usUsage	   = 5;	// Gamepad - e.g. XBox 360 or XBox One controllers
-			rid[1].dwFlags     = RIDEV_EXINPUTSINK; // Recieve messages when in background if 
-													// foreground application isn't processing it via raw input.
+			rid[1].dwFlags     = RIDEV_INPUTSINK; // Recieve messages when in background.
 			rid[1].hwndTarget = hWnd;
 
 			if(!RegisterRawInputDevices(&rid, 2, sizeof(RAWINPUTDEVICE)))
